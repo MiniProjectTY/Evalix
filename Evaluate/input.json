@@ -1,0 +1,998 @@
+[
+  {
+    "verb": "act",
+    "domain": "affective",
+    "affective_domain": "characterizing",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "adapt",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "adapt",
+    "domain": "affective",
+    "affective_domain": "organizing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "adapt",
+    "domain": "psychomotor",
+    "psychomotor_domain": "adaptation",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "advocate",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "advocate",
+    "domain": "affective",
+    "affective_domain": "characterizing",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "alter",
+    "domain": "affective",
+    "affective_domain": "organizing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "alter",
+    "domain": "psychomotor",
+    "psychomotor_domain": "adaptation",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "analyze",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "answer",
+    "domain": "affective",
+    "affective_domain": "responding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "apply",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "appraise",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "argue",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "argue",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "arrange",
+    "domain": "affective",
+    "affective_domain": "organizing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "ask",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "ask",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "assemble",
+    "domain": "psychomotor",
+    "psychomotor_domain": "mechanism",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "assess",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "assist",
+    "domain": "affective",
+    "affective_domain": "responding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "begin",
+    "domain": "psychomotor",
+    "psychomotor_domain": "set",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "build",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "calibrate",
+    "domain": "psychomotor",
+    "psychomotor_domain": "mechanism",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "categorize",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "challenge",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "change",
+    "domain": "psychomotor",
+    "psychomotor_domain": "adaptation",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "choose",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "choose",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "choose",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "classify",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "combine",
+    "domain": "affective",
+    "affective_domain": "organizing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "compare",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "compare",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "compare",
+    "domain": "affective",
+    "affective_domain": "organizing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "comply",
+    "domain": "affective",
+    "affective_domain": "responding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "compose",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "conclude",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "construct",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "contrast",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "copy",
+    "domain": "psychomotor",
+    "psychomotor_domain": "guided_response",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "create",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "create",
+    "domain": "psychomotor",
+    "psychomotor_domain": "origination",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "criticize",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "critique",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "defend",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "defend",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "defend",
+    "domain": "affective",
+    "affective_domain": "organizing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "define",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "demonstrate",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "demonstrate",
+    "domain": "affective",
+    "affective_domain": "characterizing",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "demonstrate",
+    "domain": "psychomotor",
+    "psychomotor_domain": "complex_overt_response",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "describe",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "describe",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "describe",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "describe",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "design",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "detect",
+    "domain": "psychomotor",
+    "psychomotor_domain": "perception",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "develop",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "differentiate",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "differentiate",
+    "domain": "psychomotor",
+    "psychomotor_domain": "perception",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "discuss",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "discuss",
+    "domain": "affective",
+    "affective_domain": "responding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "display",
+    "domain": "psychomotor",
+    "psychomotor_domain": "set",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "distinguish",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "distinguish",
+    "domain": "psychomotor",
+    "psychomotor_domain": "perception",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "dramatize",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "employ",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "examine",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "execute",
+    "domain": "psychomotor",
+    "psychomotor_domain": "mechanism",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "experiment",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "explain",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "explain",
+    "domain": "psychomotor",
+    "psychomotor_domain": "set",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "follow",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "follow",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "follow",
+    "domain": "psychomotor",
+    "psychomotor_domain": "guided_response",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "formulate",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "generate",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "help",
+    "domain": "affective",
+    "affective_domain": "responding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "identify",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "identify",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "identify",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "identify",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "identify",
+    "domain": "psychomotor",
+    "psychomotor_domain": "perception",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "illustrate",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "illustrate",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "improvise",
+    "domain": "psychomotor",
+    "psychomotor_domain": "complex_overt_response",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "influence",
+    "domain": "affective",
+    "affective_domain": "characterizing",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "initiate",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "interpret",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "interpret",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "invent",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "investigate",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "invite",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "isolate",
+    "domain": "psychomotor",
+    "psychomotor_domain": "perception",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "join",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "judge",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "justify",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "justify",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "label",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "list",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "listen",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "listen",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "locate",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "locate",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "master",
+    "domain": "psychomotor",
+    "psychomotor_domain": "mechanism",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "match",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "measure",
+    "domain": "psychomotor",
+    "psychomotor_domain": "complex_overt_response",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "memorize",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "mimic",
+    "domain": "psychomotor",
+    "psychomotor_domain": "guided_response",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "modify",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "modify",
+    "domain": "psychomotor",
+    "psychomotor_domain": "adaptation",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "move",
+    "domain": "psychomotor",
+    "psychomotor_domain": "set",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "name",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "notice",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "notice",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "operate",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "organize",
+    "domain": "affective",
+    "affective_domain": "organizing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "paraphrase",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "participate",
+    "domain": "affective",
+    "affective_domain": "responding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "perceive",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "perceive",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "perform",
+    "domain": "psychomotor",
+    "psychomotor_domain": "mechanism",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "plan",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "position",
+    "domain": "psychomotor",
+    "psychomotor_domain": "set",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "practice",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "practice",
+    "domain": "affective",
+    "affective_domain": "characterizing",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "predict",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "predict",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "present",
+    "domain": "affective",
+    "affective_domain": "responding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "prioritize",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "propose",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "propose",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "question",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "react",
+    "domain": "psychomotor",
+    "psychomotor_domain": "set",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "recall",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "recognize",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "recognize",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "recommend",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "refine",
+    "domain": "psychomotor",
+    "psychomotor_domain": "complex_overt_response",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "relate",
+    "domain": "affective",
+    "affective_domain": "organizing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "relate",
+    "domain": "psychomotor",
+    "psychomotor_domain": "perception",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "repeat",
+    "domain": "psychomotor",
+    "psychomotor_domain": "guided_response",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "report",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "report",
+    "domain": "affective",
+    "affective_domain": "responding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "reproduce",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "resolve",
+    "domain": "affective",
+    "affective_domain": "characterizing",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "restate",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "revise",
+    "domain": "psychomotor",
+    "psychomotor_domain": "adaptation",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "schedule",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "select",
+    "domain": "affective",
+    "affective_domain": "receiving",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "select",
+    "domain": "psychomotor",
+    "psychomotor_domain": "perception",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "serve",
+    "domain": "affective",
+    "affective_domain": "characterizing",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "share",
+    "domain": "affective",
+    "affective_domain": "valuing",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "sketch",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "solve",
+    "domain": "cognitive",
+    "cognitive_domain": "creating",
+    "level_of_bloom's_taxonomy": 6
+  },
+  {
+    "verb": "start",
+    "domain": "psychomotor",
+    "psychomotor_domain": "set",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "state",
+    "domain": "cognitive",
+    "cognitive_domain": "remembering",
+    "level_of_bloom's_taxonomy": 1
+  },
+  {
+    "verb": "summarize",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "support",
+    "domain": "affective",
+    "affective_domain": "responding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "synthesize",
+    "domain": "affective",
+    "affective_domain": "organizing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "test",
+    "domain": "cognitive",
+    "cognitive_domain": "analyzing",
+    "level_of_bloom's_taxonomy": 4
+  },
+  {
+    "verb": "trace",
+    "domain": "psychomotor",
+    "psychomotor_domain": "guided_response",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "translate",
+    "domain": "cognitive",
+    "cognitive_domain": "understanding",
+    "level_of_bloom's_taxonomy": 2
+  },
+  {
+    "verb": "use",
+    "domain": "cognitive",
+    "cognitive_domain": "applying",
+    "level_of_bloom's_taxonomy": 3
+  },
+  {
+    "verb": "validate",
+    "domain": "cognitive",
+    "cognitive_domain": "evaluating",
+    "level_of_bloom's_taxonomy": 5
+  },
+  {
+    "verb": "volunteer",
+    "domain": "psychomotor",
+    "psychomotor_domain": "set",
+    "level_of_bloom's_taxonomy": 2
+  }
+]
