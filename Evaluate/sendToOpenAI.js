@@ -91,7 +91,7 @@ exports.sendToOpenAI = async (evaluationResult) => {
   console.log(evaluationResult.result.affective);
 
   const prompt = `
-### Bloom's Taxonomy Analysis: Inputs and Outputs ###
+### Learning Domain's Analysis: Inputs and Outputs ###
 
 **Inputs:**
 - Affective domain levels: ${evaluationResult.result.affective}
@@ -133,16 +133,10 @@ exports.sendToOpenAI = async (evaluationResult) => {
 
     doc.pipe(fs.createWriteStream(pdfPath));
 
-    doc.fontSize(14).text("Bloom's Taxonomy Analysis: Inputs and Outputs", {
+    doc.fontSize(14).text("Detailed Analysis of Learning Domains", {
       underline: true,
     });
     doc.moveDown();
-    doc.fontSize(12).text("Inputs:");
-    doc.text(`Affective domain levels: ${evaluationResult.result.affective}`);
-    doc.text(`Cognitive domain levels: ${evaluationResult.result.cognitive}`);
-    doc.text(
-      `Psychomotor domain levels: ${evaluationResult.result.psychomotor}`
-    );
     doc.text(`Target weights:`);
     doc.text(
       `  - Affective: ${evaluationResult.targetAffectiveWeight.toFixed(2)}%`
