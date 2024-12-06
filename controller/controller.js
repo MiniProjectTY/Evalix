@@ -22,24 +22,9 @@ exports.handler = async (req, res) => {
 
   try {
     await fileConverter.convertPDFToText(req.file.path, outputFilePath);
-    evaluate(outputFilePath);
-
-    let result = evaluate(outputFilePath);
-    console.log(result);
-
-    // // delete files after the task is done
-    // // Delete the uploaded file and the converted output file
-    // fs.unlink(req.file.path, (err) => {
-    //     if (err) console.error(`Error deleting uploaded file: ${err.message}`);
-    //     else console.log("Uploaded file deleted successfully.");
-    // });
-
-    // fs.unlink(outputFilePath, (err) => {
-    //     if (err) console.error(`Error deleting output file: ${err.message}`);
-    //     else console.log("Output file deleted successfully.");
-    // });
-
-    res.send("success");
+    let result = await evaluate(outputFilePath);
+    // res.json({ result });
+    res.download(result);
   } catch (error) {
     console.error("Error converting file or saving to DB:", error);
     res.status(500).send("Error converting file or saving to DB");

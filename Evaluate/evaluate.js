@@ -1,7 +1,8 @@
 const fs = require("fs");
 const verbs = require("./input.json");
+const { sendToOpenAI } = require("./sendToOpenAI");
 
-exports.evaluate = (filepath) => {
+exports.evaluate = async (filepath) => {
   let result = {
     affective: [0, 0, 0, 0, 0, 0],
     cognitive: [0, 0, 0, 0, 0, 0],
@@ -59,7 +60,7 @@ exports.evaluate = (filepath) => {
   // Apply weights (50%, 30%, 20%) for each domain
   const targetAffectiveWeight = 50;
   const targetCognitiveWeight = 30;
-  const targetPsychomotoWeight = 20;
+  const targetPsychomotorWeight = 20;
 
   const NormalizedAffective =
     (affectiveWeightedSum * 100) /
@@ -106,22 +107,28 @@ exports.evaluate = (filepath) => {
   const totalScore =
     addRewardPenalty(targetAffectiveWeight, NormalizedAffective) +
     addRewardPenalty(targetCognitiveWeight, NormalizedCognitive) +
-    addRewardPenalty(targetPsychomotoWeight, NormalizedPsychomotor);
+    addRewardPenalty(targetPsychomotorWeight, NormalizedPsychomotor);
 
   // Log or return the result
   console.log({
     result,
+    targetAffectiveWeight,
+    targetCognitiveWeight,
+    targetPsychomotorWeight,
     NormalizedAffective,
     NormalizedCognitive,
     NormalizedPsychomotor,
     totalScore,
   });
-
-  return {
+  const response = await sendToOpenAI({
     result,
+    targetAffectiveWeight,
+    targetCognitiveWeight,
+    targetPsychomotorWeight,
     NormalizedAffective,
     NormalizedCognitive,
     NormalizedPsychomotor,
     totalScore,
-  };
+  });
+  return response;
 };
