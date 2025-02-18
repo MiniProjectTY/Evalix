@@ -2,133 +2,138 @@ const fs = require("fs");
 const verbs = require("./input.json");
 const { sendToOpenAI } = require("./sendToOpenAI");
 
+// Exports a function `evaluate` that takes a file path, reads its content, 
+// and evaluates the content based on predefined verbs and their associated
+// Bloom's taxonomy levels and domains.
 exports.evaluate = async (filepath) => {
+  // Initialize the result object to store counts for each domain and level of Bloom's taxonomy.
   let result = {
-    affective: [0, 0, 0, 0, 0, 0],
-    cognitive: [0, 0, 0, 0, 0, 0],
-    psychomotor: [0, 0, 0, 0, 0, 0],
+    affective: [0, 0, 0, 0, 0, 0], // Counts for 6 levels in the affective domain.
+    cognitive: [0, 0, 0, 0, 0, 0], // Counts for 6 levels in the cognitive domain.
+    psychomotor: [0, 0, 0, 0, 0, 0], // Counts for 6 levels in the psychomotor domain.
   };
-
-  let fileText;
+  let fileText; // Variable to hold the content of the file.
   try {
+    // Read the file at the provided `filepath` in UTF-8 encoding.
     fileText = fs.readFileSync(filepath, "utf8");
   } catch (err) {
+    // Log an error message if there is an issue reading the file.
     console.error("Error reading file:", err);
-    return;
+    return; // Exit the function if the file cannot be read.
   }
-
+  // Remove common punctuation (.,!?) from the file content and split it into an array of words.
   const wordsArray = fileText.replace(/[.,!?]/g, "").split(/\s+/);
-
+  // Iterate over each word in the words array.
   for (let word of wordsArray) {
+    // Skip empty words (e.g., extra spaces).
     if (word === "") continue;
-
+    // Find the first occurrence of the word in the `verbs` array.
+    // `verbs` is assumed to be a predefined list containing verbs with their domains and levels.
     let verbIndex = verbs.findIndex((verb) => verb.verb === word);
-
+    // If the word is not found in the `verbs` list, skip to the next word.
     if (verbIndex == -1) continue;
-
-    // Find the first index of the verb
+    // Process all matching entries for the current word in the `verbs` list.
     while (verbIndex < verbs.length && verbs[verbIndex].verb === word) {
-      // Increment the count at the corresponding Bloom's level and domain
+      // Extract the domain (e.g., affective, cognitive, psychomotor) 
+      // and the Bloom's taxonomy level associated with the verb.
       const domain = verbs[verbIndex].domain;
       const level = verbs[verbIndex]["level_of_bloom's_taxonomy"];
-
-      // Ensure that the level is within bounds (1 to 6)
+      // Ensure the level is valid (should be between 1 and 6).
       if (level >= 1 && level <= 6) {
+        // Increment the count for the corresponding domain and level.
         result[domain][level - 1]++;
       }
-
-      // Move to the next verb in the array
+      // Move to the next verb in the `verbs` list.
       verbIndex++;
-
-      // If verbIndex goes out of bounds, break out of the loop
+      // If `verbIndex` exceeds the bounds of the `verbs` list, stop further iteration.
       if (verbIndex >= verbs.length) {
         break;
       }
     }
   }
 
-  const calculateWeightedSum = (domainArray) => {
-    return domainArray.reduce((sum, value, index) => {
-      return sum + value * (index + 1);
-    }, 0);
-  };
+const calculateWeightedSum = (domainArray) => {
+  return domainArray.reduce((sum, value, index) => {
+    return sum + value * (index + 1);
+  }, 0);
+};
 
-  const affectiveWeightedSum = calculateWeightedSum(result.affective);
-  const cognitiveWeightedSum = calculateWeightedSum(result.cognitive);
-  const psychomotorWeightedSum = calculateWeightedSum(result.psychomotor);
+const affectiveWeightedSum = calculateWeightedSum(result.affective);
+const cognitiveWeightedSum = calculateWeightedSum(result.cognitive);
+const psychomotorWeightedSum = calculateWeightedSum(result.psychomotor);
 
-  // Apply weights (50%, 30%, 20%) for each domain
-  const targetAffectiveWeight = 50;
-  const targetCognitiveWeight = 30;
-  const targetPsychomotorWeight = 20;
+// Apply weights (50%, 30%, 20%) for each domain
+const targetAffectiveWeight = 30;
+const targetCognitiveWeight = 50;
+const targetPsychomotorWeight = 20;
 
-  const NormalizedAffective =
-    (affectiveWeightedSum * 100) /
-    (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
-  const NormalizedCognitive =
-    (cognitiveWeightedSum * 100) /
-    (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
-  const NormalizedPsychomotor =
-    (psychomotorWeightedSum * 100) /
-    (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
+const NormalizedAffective =
+  (affectiveWeightedSum * 100) /
+  (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
+const NormalizedCognitive =
+  (cognitiveWeightedSum * 100) /
+  (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
+const NormalizedPsychomotor =
+  (psychomotorWeightedSum * 100) /
+  (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
 
-  function addRewardPenalty(targetWeight, NormalizedWeight) {
-    let deviationFactor = 0;
-    //penalty
-    if (targetWeight > NormalizedWeight) {
-      const difference = targetWeight - NormalizedWeight;
-      if (difference < 10) {
-        if (difference < 5) {
-          deviationFactor = 0.5;
-        } else {
-          deviationFactor = 1;
-        }
+function addRewardPenalty(targetWeight, NormalizedWeight) {
+  let deviationFactor = 0;
+  //penalty
+  if (targetWeight > NormalizedWeight) {
+    const difference = targetWeight - NormalizedWeight;
+    if (difference < 10) {
+      if (difference < 5) {
+        deviationFactor = 0.5;
       } else {
-        deviationFactor = 2;
+        deviationFactor = 1;
       }
-      return NormalizedWeight - difference * deviationFactor;
+    } else {
+      deviationFactor = 2;
     }
-    //reward
-    else {
-      const difference = NormalizedWeight - targetWeight;
-      if (difference < 10) {
-        if (difference < 5) {
-          deviationFactor = 1.5;
-        } else {
-          deviationFactor = 1.1;
-        }
-      } else {
-        deviationFactor = 0.8;
-      }
-      return NormalizedWeight + difference * deviationFactor;
-    }
+    return NormalizedWeight - difference * deviationFactor;
   }
+  //reward
+  else {
+    const difference = NormalizedWeight - targetWeight;
+    if (difference < 10) {
+      if (difference < 5) {
+        deviationFactor = 1.5;
+      } else {
+        deviationFactor = 1.1;
+      }
+    } else {
+      deviationFactor = 0.8;
+    }
+    return NormalizedWeight + difference * deviationFactor;
+  }
+}
 
-  const totalScore =
-    addRewardPenalty(targetAffectiveWeight, NormalizedAffective) +
-    addRewardPenalty(targetCognitiveWeight, NormalizedCognitive) +
-    addRewardPenalty(targetPsychomotorWeight, NormalizedPsychomotor);
+const totalScore =
+  addRewardPenalty(targetAffectiveWeight, NormalizedAffective) +
+  addRewardPenalty(targetCognitiveWeight, NormalizedCognitive) +
+  addRewardPenalty(targetPsychomotorWeight, NormalizedPsychomotor);
 
-  // Log or return the result
-  console.log({
-    result,
-    targetAffectiveWeight,
-    targetCognitiveWeight,
-    targetPsychomotorWeight,
-    NormalizedAffective,
-    NormalizedCognitive,
-    NormalizedPsychomotor,
-    totalScore,
-  });
-  const response = await sendToOpenAI({
-    result,
-    targetAffectiveWeight,
-    targetCognitiveWeight,
-    targetPsychomotorWeight,
-    NormalizedAffective,
-    NormalizedCognitive,
-    NormalizedPsychomotor,
-    totalScore,
-  });
-  return response;
+// Log or return the result
+console.log({
+  result,
+  targetAffectiveWeight,
+  targetCognitiveWeight,
+  targetPsychomotorWeight,
+  NormalizedAffective,
+  NormalizedCognitive,
+  NormalizedPsychomotor,
+  totalScore,
+});
+const response = await sendToOpenAI({
+  result,
+  targetAffectiveWeight,
+  targetCognitiveWeight,
+  targetPsychomotorWeight,
+  NormalizedAffective,
+  NormalizedCognitive,
+  NormalizedPsychomotor,
+  totalScore,
+});
+return response;
 };
