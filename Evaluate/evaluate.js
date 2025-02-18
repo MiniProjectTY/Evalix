@@ -125,15 +125,15 @@ console.log({
   NormalizedPsychomotor,
   totalScore,
 });
-const response = await sendToOpenAI({
-  result,
-  targetAffectiveWeight,
-  targetCognitiveWeight,
-  targetPsychomotorWeight,
-  NormalizedAffective,
-  NormalizedCognitive,
-  NormalizedPsychomotor,
-  totalScore,
-});
-return response;
+// const response = await sendToOpenAI({
+//   result,
+//   targetAffectiveWeight,
+//   targetCognitiveWeight,
+//   targetPsychomotorWeight,
+//   NormalizedAffective,
+//   NormalizedCognitive,
+//   NormalizedPsychomotor,
+//   totalScore,
+// });
+return {};
 };

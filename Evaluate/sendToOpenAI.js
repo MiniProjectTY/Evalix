@@ -38,7 +38,6 @@ exports.sendToOpenAI = async (evaluationResult) => {
 1. **Outputs**: Provide the results of the analysis in a professional and concise manner.
 2. **Recommendations**: Offer actionable steps to improve alignment with the targets and address any significant findings relative to the field of research.
 `;
-
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(prompt);

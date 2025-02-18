@@ -8,25 +8,31 @@ exports.handler = async (req, res) => {
     res.status(500).send("Error while uploading file");
     return;
   }
+
+  const inputFilePath = req.file.path;
   const inputFileName = req.file.originalname;
-  const timestamp = Date.now();
-  const outputFileName = `${path.basename(
-    inputFileName,
-    path.extname(inputFileName)
-  )}_${timestamp}.txt`;
   const outputDir = path.join(__dirname, "../Converted");
+
+  // Ensure the output directory exists
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
-  const outputFilePath = path.join(__dirname, "../Converted", outputFileName);
 
   try {
-    await fileConverter.convertPDFToText(req.file.path, outputFilePath);
+    // Generate output filename with same name as uploaded file, but with .txt extension
+    const outputFileName = path.basename(inputFileName, path.extname(inputFileName)) + ".txt";
+    const outputFilePath = path.join(outputDir, outputFileName);
+
+    // Convert PDF to text and save with the same filename
+    await fileConverter.convertPDFToText(inputFilePath, outputFilePath);
+
+    // Process the converted file
     let result = await evaluate(outputFilePath);
-    // res.json({ result });
+
+    // Send the processed file as a download
     res.download(result);
   } catch (error) {
-    console.error("Error converting file or saving to DB:", error);
-    res.status(500).send("Error converting file or saving to DB");
+    console.error("Error processing file:", error);
+    res.status(500).send("Error processing file");
   }
 };
