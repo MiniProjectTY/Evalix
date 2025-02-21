@@ -20,17 +20,18 @@ exports.handler = async (req, res) => {
 
   try {
     // Generate output filename with same name as uploaded file, but with .txt extension
-    const outputFileName = path.basename(inputFileName, path.extname(inputFileName)) + ".txt";
+    const outputFileName = path.parse(inputFileName).name + ".txt";
     const outputFilePath = path.join(outputDir, outputFileName);
 
     // Convert PDF to text and save with the same filename
     await fileConverter.convertPDFToText(inputFilePath, outputFilePath);
 
     // Process the converted file
-    let result = await evaluate(outputFilePath);
+    // let result = await evaluate(outputFilePath);
 
     // Send the processed file as a download
-    res.download(result);
+    // res.download(result);
+    res.json({ msg: "hi" });
   } catch (error) {
     console.error("Error processing file:", error);
     res.status(500).send("Error processing file");

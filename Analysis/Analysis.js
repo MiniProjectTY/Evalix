@@ -62,7 +62,7 @@ async function analyzeFile(filePath) {
     XLSX.utils.book_append_sheet(workbook, worksheet, "Analysis");
     const sheetData = xlsx.utils.sheet_to_json(worksheet, { header: 1 });
     // console.log("Sheet data before adding new row:", sheetData);
-    const newRow = [filePath.split("/").pop(), counts.Cognitive, counts.Affective, counts.Psychomotor, counts.Unclassified];
+    const newRow = [path.basename(filePath), counts.Cognitive, counts.Affective, counts.Psychomotor, counts.Unclassified];
     sheetData.push(newRow);
     const newWorksheet = xlsx.utils.aoa_to_sheet(sheetData);
     workbook.Sheets["Analysis"] = newWorksheet;
