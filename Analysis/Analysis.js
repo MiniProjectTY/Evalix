@@ -1,14 +1,14 @@
-const XLSX = require('xlsx');
+const XLSX = require("xlsx");
 const fs = require("fs");
 const pdfParse = require("pdf-parse");
-const path = require('path');
+const path = require("path");
 
 const outputFileName = "analysis_output.xlsx";
 
 // Function to load domains from input.json
 const loadDomains = () => {
   try {
-    const data = fs.readFileSync(path.join(__dirname, 'input.json'), 'utf8');
+    const data = fs.readFileSync(path.join(__dirname, "input.json"), "utf8");
     return JSON.parse(data);
   } catch (err) {
     console.error("Error reading input.json:", err);
@@ -42,15 +42,20 @@ async function analyzeFile(filePath) {
     }
 
     const domains = loadDomains();
-    let counts = { Cognitive: 0, Affective: 0, Psychomotor: 0, Unclassified: 0 };
-    const words = text.split(/\s+/);
-    words.forEach(word => {
+    let counts = {
+      Cognitive: 0,
+      Affective: 0,
+      Psychomotor: 0,
+      Unclassified: 0,
+    };
+    const words = text.replace(/[.,!?]/g, "").split(/\s+/);
+    // const words = text.split(/\s+/);
+    words.forEach((word) => {
       let classified = false;
       for (const domain in domains) {
         if (domains[domain].includes(word)) {
           counts[domain]++;
           classified = true;
-          break;
         }
       }
       if (!classified) counts.Unclassified++;
@@ -66,7 +71,9 @@ async function analyzeFile(filePath) {
     } else {
       // Create a new workbook if file does not exist
       workbook = XLSX.utils.book_new();
-      worksheet = XLSX.utils.aoa_to_sheet([["Title", "Cognitive", "Affective", "Psychomotor", "Unclassified"]]);
+      worksheet = XLSX.utils.aoa_to_sheet([
+        ["Title", "Cognitive", "Affective", "Psychomotor", "Unclassified"],
+      ]);
       XLSX.utils.book_append_sheet(workbook, worksheet, "Analysis");
     }
 
@@ -74,7 +81,13 @@ async function analyzeFile(filePath) {
     const sheetData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
     // Append new row
-    const newRow = [path.basename(filePath), counts.Cognitive, counts.Affective, counts.Psychomotor, counts.Unclassified];
+    const newRow = [
+      path.basename(filePath),
+      counts.Cognitive,
+      counts.Affective,
+      counts.Psychomotor,
+      counts.Unclassified,
+    ];
     sheetData.push(newRow);
 
     // Convert back to worksheet and update workbook
@@ -90,5 +103,5 @@ async function analyzeFile(filePath) {
 }
 
 module.exports = {
-  analyzeFile
+  analyzeFile,
 };
