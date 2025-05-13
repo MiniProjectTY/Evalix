@@ -2,7 +2,7 @@ const fs = require("fs");
 const verbs = require("./input.json");
 const { sendToOpenAI } = require("./sendToOpenAI");
 
-// Exports a function `evaluate` that takes a file path, reads its content, 
+// Exports a function `evaluate` that takes a file path, reads its content,
 // and evaluates the content based on predefined verbs and their associated
 // Bloom's taxonomy levels and domains.
 exports.evaluate = async (filepath) => {
@@ -12,20 +12,18 @@ exports.evaluate = async (filepath) => {
     cognitive: [0, 0, 0, 0, 0, 0], // Counts for 6 levels in the cognitive domain.
     psychomotor: [0, 0, 0, 0, 0, 0], // Counts for 6 levels in the psychomotor domain.
   };
-  let fileText; // Variable to hold the content of the file.
+  let fileText;
   try {
     // Read the file at the provided `filepath` in UTF-8 encoding.
     fileText = fs.readFileSync(filepath, "utf8");
   } catch (err) {
-    // Log an error message if there is an issue reading the file.
     console.error("Error reading file:", err);
-    return; // Exit the function if the file cannot be read.
+    return;
   }
   // Remove common punctuation (.,!?) from the file content and split it into an array of words.
   const wordsArray = fileText.replace(/[.,!?]/g, "").split(/\s+/);
   // Iterate over each word in the words array.
   for (let word of wordsArray) {
-    // Skip empty words (e.g., extra spaces).
     if (word === "") continue;
     // Find the first occurrence of the word in the `verbs` array.
     // `verbs` is assumed to be a predefined list containing verbs with their domains and levels.
@@ -34,7 +32,7 @@ exports.evaluate = async (filepath) => {
     if (verbIndex == -1) continue;
     // Process all matching entries for the current word in the `verbs` list.
     while (verbIndex < verbs.length && verbs[verbIndex].verb === word) {
-      // Extract the domain (e.g., affective, cognitive, psychomotor) 
+      // Extract the domain (e.g., affective, cognitive, psychomotor)
       // and the Bloom's taxonomy level associated with the verb.
       const domain = verbs[verbIndex].domain;
       const level = verbs[verbIndex]["level_of_bloom's_taxonomy"];
@@ -52,88 +50,91 @@ exports.evaluate = async (filepath) => {
     }
   }
 
-const calculateWeightedSum = (domainArray) => {
-  return domainArray.reduce((sum, value, index) => {
-    return sum + value * (index + 1);
-  }, 0);
-};
+  const calculateWeightedSum = (domainArray) => {
+    return domainArray.reduce((sum, value, index) => {
+      return sum + value * (index + 1);
+    }, 0);
+  };
 
-const affectiveWeightedSum = calculateWeightedSum(result.affective);
-const cognitiveWeightedSum = calculateWeightedSum(result.cognitive);
-const psychomotorWeightedSum = calculateWeightedSum(result.psychomotor);
+  const affectiveWeightedSum = calculateWeightedSum(result.affective);
+  const cognitiveWeightedSum = calculateWeightedSum(result.cognitive);
+  const psychomotorWeightedSum = calculateWeightedSum(result.psychomotor);
 
-// Apply weights (50%, 30%, 20%) for each domain
-const targetAffectiveWeight = 30;
-const targetCognitiveWeight = 50;
-const targetPsychomotorWeight = 20;
+  // Apply weights (50%, 30%, 20%) for each domain
+  const targetAffectiveWeight = 15;
+  const targetCognitiveWeight = 57;
+  const targetPsychomotorWeight = 28;
 
-const NormalizedAffective =
-  (affectiveWeightedSum * 100) /
-  (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
-const NormalizedCognitive =
-  (cognitiveWeightedSum * 100) /
-  (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
-const NormalizedPsychomotor =
-  (psychomotorWeightedSum * 100) /
-  (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
+  const NormalizedAffective =
+    (affectiveWeightedSum * 100) /
+    (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
+  const NormalizedCognitive =
+    (cognitiveWeightedSum * 100) /
+    (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
+  const NormalizedPsychomotor =
+    (psychomotorWeightedSum * 100) /
+    (affectiveWeightedSum + cognitiveWeightedSum + psychomotorWeightedSum);
 
-function addRewardPenalty(targetWeight, NormalizedWeight) {
-  let deviationFactor = 0;
-  //penalty
-  if (targetWeight > NormalizedWeight) {
-    const difference = targetWeight - NormalizedWeight;
-    if (difference < 10) {
-      if (difference < 5) {
-        deviationFactor = 0.5;
+  function addRewardPenalty(targetWeight, NormalizedWeight) {
+    let deviationFactor = 0;
+    //penalty
+    if (targetWeight > NormalizedWeight) {
+      const difference = targetWeight - NormalizedWeight;
+      if (difference < 10) {
+        if (difference < 5) {
+          deviationFactor = 0.5;
+        } else {
+          deviationFactor = 1;
+        }
       } else {
-        deviationFactor = 1;
+        deviationFactor = 2;
       }
-    } else {
-      deviationFactor = 2;
+      return NormalizedWeight - difference * deviationFactor;
     }
-    return NormalizedWeight - difference * deviationFactor;
-  }
-  //reward
-  else {
-    const difference = NormalizedWeight - targetWeight;
-    if (difference < 10) {
-      if (difference < 5) {
-        deviationFactor = 1.5;
+    //reward
+    else {
+      const difference = NormalizedWeight - targetWeight;
+      if (difference < 10) {
+        if (difference < 5) {
+          deviationFactor = 1.5;
+        } else {
+          deviationFactor = 1.1;
+        }
       } else {
-        deviationFactor = 1.1;
+        deviationFactor = 0.8;
       }
-    } else {
-      deviationFactor = 0.8;
+      return NormalizedWeight + difference * deviationFactor;
     }
-    return NormalizedWeight + difference * deviationFactor;
   }
-}
 
-const totalScore =
-  addRewardPenalty(targetAffectiveWeight, NormalizedAffective) +
-  addRewardPenalty(targetCognitiveWeight, NormalizedCognitive) +
-  addRewardPenalty(targetPsychomotorWeight, NormalizedPsychomotor);
+  const totalScore =
+    addRewardPenalty(targetAffectiveWeight, NormalizedAffective) +
+    addRewardPenalty(targetCognitiveWeight, NormalizedCognitive) +
+    addRewardPenalty(targetPsychomotorWeight, NormalizedPsychomotor);
 
-// Log or return the result
-console.log({
-  result,
-  targetAffectiveWeight,
-  targetCognitiveWeight,
-  targetPsychomotorWeight,
-  NormalizedAffective,
-  NormalizedCognitive,
-  NormalizedPsychomotor,
-  totalScore,
-});
-// const response = await sendToOpenAI({
-//   result,
-//   targetAffectiveWeight,
-//   targetCognitiveWeight,
-//   targetPsychomotorWeight,
-//   NormalizedAffective,
-//   NormalizedCognitive,
-//   NormalizedPsychomotor,
-//   totalScore,
-// });
-return {};
+  // Log or return the result
+  console.log({
+    result,
+    targetAffectiveWeight,
+    targetCognitiveWeight,
+    targetPsychomotorWeight,
+    NormalizedAffective,
+    NormalizedCognitive,
+    NormalizedPsychomotor,
+    totalScore,
+  });
+  const response = await sendToOpenAI(
+    {
+      result,
+      targetAffectiveWeight,
+      targetCognitiveWeight,
+      targetPsychomotorWeight,
+      NormalizedAffective,
+      NormalizedCognitive,
+      NormalizedPsychomotor,
+      totalScore,
+    },
+    filepath
+  );
+  return response;
 };

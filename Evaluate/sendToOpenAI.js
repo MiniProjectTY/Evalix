@@ -3,9 +3,9 @@ const PDFDocument = require("pdfkit");
 const fs = require("fs");
 const path = require("path");
 
-const genAI = new GoogleGenerativeAI("AIzaSyDEL_IgZpn7FdhAZ_Wr2INJm820Ijvxh_I");
+const genAI = new GoogleGenerativeAI("AIzaSyAhjn25uYWb9M7p41R86iICR9AgQgmTev4");
 
-exports.sendToOpenAI = async (evaluationResult) => {
+exports.sendToOpenAI = async (evaluationResult, outpathFilepath) => {
   console.log(evaluationResult.result.affective);
 
   const prompt = `
@@ -29,6 +29,7 @@ exports.sendToOpenAI = async (evaluationResult) => {
 1. Acknowledge the **inputs** provided in a structured manner.
 2. Provide a **crisp, professional summary** of the analysis results (outputs).
 3. Offer **targeted recommendations** or observations for each domain (affective, cognitive, psychomotor) with actionable steps for alignment and improvement relative to the field of research.
+4. Analyze the attached file and incorporate its content into your analysis and recommendations.
 
 **Note:** 
 - The output generated should be properly indented and formatted.
@@ -39,8 +40,24 @@ exports.sendToOpenAI = async (evaluationResult) => {
 2. **Recommendations**: Offer actionable steps to improve alignment with the targets and address any significant findings relative to the field of research.
 `;
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent(prompt);
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+    const fileData = fs.readFileSync(outpathFilepath, "utf8");
+    const mimeType = getMimeType(outpathFilepath);
+
+    const filePart = {
+      inlineData: {
+        data: fileData.toString("base64"),
+        mimeType: mimeType,
+      },
+    };
+
+    const parts = [
+      { text: prompt },
+      // { inlineData: { data: fileData.toString("base64"), mimeType: mimeType } },
+    ];
+
+    const result = await model.generateContent({ contents: [{ parts }] });
     const responseText = result.response.text();
 
     console.log("Generated Response:", responseText);
@@ -88,3 +105,20 @@ exports.sendToOpenAI = async (evaluationResult) => {
     throw error;
   }
 };
+
+function getMimeType(filePath) {
+  const ext = path.extname(filePath).toLowerCase();
+  switch (ext) {
+    case ".pdf":
+      return "application/pdf";
+    case ".txt":
+      return "text/plain";
+    case ".jpg":
+    case ".jpeg":
+      return "image/jpeg";
+    case ".png":
+      return "image/png";
+    default:
+      return "application/octet-stream";
+  }
+}
